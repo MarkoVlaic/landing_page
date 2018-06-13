@@ -1,0 +1,202 @@
+:root {
+  --container-bg-color: #333;
+
+  --left-bg-color: rgba(244, 243, 195, 0.7);
+  --left-button-hover-color: rgba(109, 107, 107, 0.3);
+
+  --right-bg-color: rgba(182, 180, 193, 0.8);
+  --right-button-hover-color: rgba(231, 227, 244, 0.3);
+
+  --hover-width: 65%;
+  --other-width: 35%;
+
+  --speed: 1000ms;
+  --read-speed: 500ms;
+
+  --title-color: #F2F4ED;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  width: 100%;
+  height: 100%;
+
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+
+  position: absolute;
+  left: 50%;
+  top: 20%;
+
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+#title {
+  font-size: 6rem;
+  font-weight: bolder;
+  color: var(--title-color);
+
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  text-transform: uppercase;
+  z-index: 10;
+
+  border: 1rem solid var(--title-color);
+  margin-top: 0.1rem;
+
+  transition: all ease-out var(--speed);
+}
+
+.title-fade {
+  opacity: 0;
+}
+
+.button {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+
+  height: 2.5rem;
+  width: 15rem;
+  padding-top: 1.3rem;
+  text-align: center;
+  color: #4D4D4D;
+  border: #4D4D4D solid 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform:translateX(-50%);
+}
+
+.split {
+  z-index: 1;
+}
+
+.split.left .button:hover {
+  background-color: var(--left-button-hover-color);
+  border-color: var(--left-button-hover-color);
+}
+
+.split.right .button:hover {
+  background-color: var(--right-button-hover-color);
+  border-color: var(--right-button-hover-color);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--container-bg-color);
+}
+
+.split {
+  position: absolute;
+
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split.left {
+  left: 0;
+  background: url('./img/travel.jpeg') center center no-repeat;
+  background-size: cover;
+}
+
+.split.left:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0;
+  background: url('./img/guide.jpeg') center center no-repeat;
+  background-size: cover;
+}
+
+.split.right:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--right-bg-color);
+}
+
+.split.left, .split.right, .split.left:before, .split.right:before {
+  transition: var(--speed) all ease-in-out;
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-left .right:before {
+  z-index: 2;
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-right .left {
+  width: var(--other-width);
+}
+
+.hover-right .left:before {
+  z-index: 2;
+}
+
+.read-container {
+  position: absolute;
+  top: 56%;
+  left: 25%;
+
+  min-width: 50%;
+  max-width: 50%;
+
+  border: 0.3rem solid rgba(77, 77, 77, 0.6);
+  padding: 0.5rem 0.2rem;
+
+  text-align: center;
+
+  background-color: rgba(77, 77, 77, 0.5);
+
+  transition: all ease-in var(--read-speed);
+
+  opacity: 0;
+}
+
+.read {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.read-left .left .read-container {
+  opacity: 1;
+}
+
+.read-right .right .read-container {
+  opacity: 1;
+}
